@@ -1,30 +1,26 @@
-import java.util.ArrayList;
 import company.models.Manager;
 import company.models.Worker;
-import company.abstracts.Employee;
+
 
 public class Main {
     public static void main(String[] args) {
+        //Worker1 i Worker2 mają ten sam nr ID
         Worker worker1 = new Worker("John Doe", 2500, 1, "2023-01-01", "System Analyst");
-        Worker worker2 = new Worker("Kristen James", 3000, 2, "2023-02-02", "QA Tester");
+        Worker worker2 = new Worker("Kristen James", 3000, 1, "2023-02-02", "QA Tester");
         Worker worker3 = new Worker("Oliver Power", 2200, 3, "2023-04-05", "Junior Developer");
         Worker worker4 = new Worker("Raphael Jacobs", 4000, 4, "2020-01-20", "Senior Software Engineer");
 
         Manager manager = new Manager("Edward", 5000, 5, "2018-08-17", "Department Head");
 
-        ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(worker1);
-        employees.add(worker2);
-        employees.add(worker3);
-        employees.add(worker4);
-        employees.add(manager);
+        // Wywołanie hashCode
+        System.out.println(worker1.getName() + " has code: " + worker1.hashCode());
+        System.out.println(worker2.getName() + " has code: " + worker3.hashCode());
+        System.out.println(worker3.getName() + " has code: " + worker4.hashCode());
+        System.out.println(manager.getName() + " has code: " + manager.hashCode());
 
-        for (Employee emp : employees) {
-            System.out.println("- " + emp.getName() + " (ID: " + emp.getId() +
-                    ", Position: " + emp.getPosition() +
-                    ", Hire date: " + emp.getHireDate() +
-                    ", Salary: " + emp.getSalary() + ")");
-            emp.work();
-        }
+        // Porównanie instancji
+        System.out.println(worker2.getName() + " equals worker1: " + worker2.equals(worker1));
+        System.out.println(worker2.getName() + " equals worker3: " + worker2.equals(worker3));
+        System.out.println(worker2.getName() + " equals manager: " + worker2.equals(manager));
     }
 }
